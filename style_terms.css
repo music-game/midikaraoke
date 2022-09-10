@@ -1,0 +1,12 @@
+body {
+	background: #f5f7fa;
+	color: #3c3b3d;
+	margin: 0;
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+}
+div.content {
+	width: min(800px, 90%);
+	margin: auto;
+}

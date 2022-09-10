@@ -1,0 +1,753 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	background: #f5f7fa;
+	color: #3c3b3d;
+	margin: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	user-select: none;
+	-webkit-user-select: none;
+}
+button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	border: 2px solid #3c3b3d;
+	border-radius: 10px;
+	color: inherit;
+	padding: 5px 10px;
+	font: inherit;
+	font-size: 16px;
+	height: 40px;
+	text-align: center;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+@media (hover: hover) {
+	button:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
+}
+button[disabled] {
+	border-color: rgba(0, 0, 0, 0.15);
+	color: rgba(0, 0, 0, 0.15);
+	background: rgba(0, 0, 0, 0.15);
+	cursor: default;
+}
+button.showsettings,
+button.showhelp {
+	border-radius: 20px;
+	height: 40px;
+	width: 40px;
+	padding: 0;
+	font-size: 20px;
+	margin: 0;
+}
+button.controls {
+	border-radius: 10px;
+	height: 45px;
+	width: 45px;
+	padding: 0;
+	font-size: 20px;
+	margin: 0;
+}
+input[type="file"] {
+	display: none;
+}
+.custom-file-upload {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	border: 2px solid #3c3b3d;
+	border-radius: 10px;
+	color: inherit;
+	padding: 0;
+	font: inherit;
+	font-size: 16px;
+	height: 45px;
+	width: 45px;
+	margin: 0;
+	cursor: pointer;
+}
+.custom-file-upload.disabled {
+	border-color: rgba(0, 0, 0, 0.15);
+	color: rgba(0, 0, 0, 0.15);
+	background: rgba(0, 0, 0, 0.15);
+	cursor: default;
+}
+@media (hover: hover) {
+	.custom-file-upload:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
+}
+button.active {
+	background: grey;
+}
+button.inactive {
+	background: white;
+}
+svg {
+	display: inline-block;
+	vertical-align: middle;
+}
+.board {
+	width: 800px;
+	/* height: 665px; */
+	/* border: 1px solid #000; */
+	border-radius: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.container {
+	width: 100%;
+	position: relative;
+}
+.titlebar {
+	display: flex;
+	justify-content: space-between;
+	width: min(95%);
+	height: auto;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Roboto", sans-serif;
+	/* font-family: Charcoal, fantasy; */
+	font-weight: 9000;
+	font-size: 30px;
+	height: 40px;
+}
+.subtitle {
+	text-align: center;
+	font: inherit;
+	font-size: 20px;
+	padding: 5px;
+}
+.debuginfo {
+	position: absolute;
+	left: 5%;
+	top: 60px;
+}
+.setup {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: min(360px, 90%);
+	height: auto;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.infobox {
+	/* display: flex; */
+	display: none;
+	justify-content: space-between;
+	width: 280px;
+	height: 45px;
+	border: 3px solid #3c3b3d;
+	border-radius: 8px;
+	text-align: center;
+	padding: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2px;
+	margin-bottom: 10px;
+	font: inherit;
+}
+.infotxt {
+	text-align: right;
+	padding: 5px;
+	height: 35px;
+	margin: auto;
+}
+.infoval {
+	width: 70px;
+	text-align: center;
+	padding: 5px;
+	height: 35px;
+}
+canvas#game {
+	display: block;
+	z-index: 3;
+}
+.lyrics {
+	text-align: center;
+	border: 1px solid black;
+	background: white !important;
+	width: 100%;
+	height: 300px;
+	margin: 10px 0 0 0;
+	overflow: auto;
+}
+.lyrics p {
+	line-height: 1.6 !important;
+}
+.lyrics div {
+	pointer-events: none;
+	cursor: default;
+	background: white !important;
+}
+.lyrics a {
+	background: white !important;
+	text-decoration: none !important;
+	border-bottom: none !important;
+	color: inherit;
+}
+.songinfotab,
+.songseltab,
+.configtab,
+.settingstab,
+.helptab {
+	position: absolute;
+	overflow: auto;
+	top: 15px;
+	left: 50%;
+	width: min(500px, 90%);
+	height: min(635px, 90%);
+	transform: translate(-50%, 0);
+	background-color: #cccccc;
+	z-index: 100;
+	border: 3px solid #3c3b3d;
+	border-radius: 8px;
+	text-align: center;
+	padding: 20px;
+	font: inherit;
+}
+.downloadtab,
+.miccaltab {
+	position: absolute;
+	overflow: auto;
+	top: 200px;
+	left: 50%;
+	width: min(450px, 80%);
+	height: 350px;
+	transform: translate(-50%, 0);
+	background-color: #cccccc;
+	z-index: 100;
+	border: 3px solid #3c3b3d;
+	border-radius: 8px;
+	text-align: center;
+	padding: 20px;
+	font: inherit;
+}
+::-webkit-scrollbar {
+	width: 12px;
+	/* width of the entire scrollbar */
+}
+::-webkit-scrollbar-track {
+	background: grey;
+	/* color of the tracking area */
+}
+::-webkit-scrollbar-thumb {
+	background-color: white;
+	/* color of the scroll thumb */
+	border-radius: 20px;
+	/* roundness of the scroll thumb */
+	border: 3px solid #3c3b3d;
+	/* creates padding around scroll thumb */
+}
+* {
+	/* for firefox */
+	scrollbar-width: thin;
+	scrollbar-color: #3c3b3d grey;
+}
+.collapse {
+	max-height: 0;
+	overflow-y: hidden;
+	transition: max-height 0.5s ease-out;
+}
+.levelsel {
+	width: min(80%, 150px);
+}
+.bestscore {
+	width: min(80%, 150px);
+	height: 40px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+.buttonbar {
+	display: flex;
+	align-items: center;
+	width: min(250px, 85%);
+	height: auto;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+span.toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100px;
+}
+span.toggle .selected {
+	border-color: rgba(0, 0, 0, 0.15);
+	color: rgba(0, 0, 0, 0.15);
+	background: rgba(0, 0, 0, 0.15);
+}
+.settingtext {
+	height: 40px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	font-size: 16px;
+	width: 100%;
+}
+.configtext {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 6px auto 6px auto;
+	font-size: 18px;
+}
+.paragraph {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	font-size: 16px;
+}
+.paragraph.left {
+	text-align: left;
+}
+.paragraph.center {
+	text-align: center;
+}
+select {
+	margin: auto;
+	padding: 5px;
+	font-size: 16px;
+	font-weight: 700;
+	border: 1px solid #ccc;
+	height: 30px;
+	min-width: 100px;
+	max-width: 90%;
+}
+.copyright {
+	width: min(250px, 80%);
+	font-size: 12px;
+	margin: 20px auto auto auto;
+}
+.tutorialtxt {
+	position: absolute;
+	text-align: center;
+	transform: translate(-50%, 0);
+	font-size: 20px;
+	color: #3c3b3d;
+	background-color: white;
+	top: 450px;
+	left: 50%;
+	width: min(80%, 640px);
+	z-index: 100;
+}
+.singletrack {
+	display: grid;
+	grid-template-columns: 40px auto 40px 50px;
+	grid-template-rows: 1fr;
+	align-items: center;
+	margin: 10px 0 0 0;
+	width: 100%;
+	font-size: 14px;
+}
+.configline {
+	display: grid;
+	grid-template-columns: 1.2fr 2fr;
+	grid-template-rows: 1fr;
+	align-items: center;
+	margin: 10px auto 0 auto;
+	width: 90%;
+	font-size: 14px;
+}
+.configname {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	text-align: left;
+	left: 0;
+	grid-column: 1/2;
+}
+.songlist {
+	display: grid;
+	grid-template-columns: 55px 1fr 70px;
+	row-gap: 10px;
+	align-items: center;
+	justify-items: left;
+	margin: 10px 0 0 0;
+	width: 100%;
+	font-size: 16px;
+	overflow: hidden;
+}
+.songlist span {
+	overflow: hidden;
+	white-space: nowrap;
+	width: 100%;
+	text-align: left;
+}
+.songlist span.bestscore {
+	text-align: center;
+	font-size: 24px;
+}
+div#songsearchlist {
+	width: 80%;
+	margin: 20px auto auto auto;
+	height: 300px;
+	overflow-y: auto;
+	background-color: white;
+}
+div#songsearchlist div {
+	width: auto;
+	outline: 2px solid;
+	text-align: left;
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	font-size: 16px;
+	cursor: pointer;
+}
+div#songsearchlist div:hover {
+	background-color: lightblue;
+}
+input.tracksel,
+input#enablemidilyrics,
+input#vocalslides,
+input#enableslides {
+	grid-column: 1/2;
+}
+input#playspeed {
+	grid-column: 2/3;
+}
+input#playtime {
+	grid-column: 2/3;
+	display: inline-block;
+	height: 30px;
+	width: 90px;
+	padding: 0 10px 0 10px;
+	margin: 0 10px 0 10px;
+	font: inherit;
+}
+input.vocalsel {
+	grid-column: 3/4;
+}
+div.grid2col {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.trackname {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	text-align: left;
+	left: 0;
+	grid-column: 2/3;
+}
+.advancedname {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	text-align: left;
+	left: 0;
+	grid-column: 2/4;
+}
+input[type="checkbox"] {
+	display: inline-block;
+	text-align: right;
+	width: 20px;
+	height: 20px;
+	margin: auto 10px auto 10px;
+}
+input[type="number"] {
+	display: inline-block;
+	height: 30px;
+	width: 90px;
+	padding: 0 10px 0 10px;
+	margin: 0 10px 0 10px;
+	font: inherit;
+}
+input[type="text"] {
+	display: inline-block;
+	height: 30px;
+	width: min(80%, 300px);
+	padding: 0 10px 0 10px;
+	margin: 10px;
+	font: inherit;
+}
+input#songname,
+input#songartist,
+input#songsearchstr {
+	grid-column: 2/3;
+	display: inline-block;
+	height: 30px;
+	padding: 0 10px 0 10px;
+	margin: 0;
+	font: inherit;
+	right: 0;
+	width: 100%;
+}
+.trackinfo {
+	display: flex;
+	margin-left: 40px;
+	width: min(50%, 300px);
+	align-items: center;
+	justify-content: space-between;
+	font-size: 12px;
+}
+.tinfo {
+	text-align: left;
+}
+meter {
+	width: 40px;
+	height: 30px;
+	grid-column: 4/5;
+}
+#transpose,
+#octave {
+	width: 40px;
+}
+button.plusminus {
+	width: 30px !important;
+	height: 30px !important;
+	padding: 0 !important;
+}
+div.pausetext {
+	color: black;
+	background-color: white;
+	position: absolute;
+	width: 50%;
+	height: 40px;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	transform: translate(-50%, -50%);
+	top: 150px;
+	left: 50%;
+}
+a#downloadlink {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	border: 2px solid #3c3b3d;
+	border-radius: 10px;
+	color: inherit;
+	padding: 5px 10px;
+	font: inherit;
+	font-size: 16px;
+	height: 40px;
+	text-align: center;
+	margin: auto;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+@media (hover: hover) {
+	a#downloadlink:hover {
+		background: rgba(0, 0, 0, 0.1);
+	}
+}
+.collapsible {
+	cursor: pointer;
+}
+.collapsible:before {
+	content: "\25B6";
+	font-size: 13px;
+	color: 3c3b3d;
+	margin-right: 15px;
+	vertical-align: +10%;
+}
+.collapseactive:before {
+	content: "\25BC";
+}
+a.disabled {
+	border-color: rgba(0, 0, 0, 0.15) !important;
+	color: rgba(0, 0, 0, 0.15) !important;
+	background: rgba(0, 0, 0, 0.15) !important;
+	cursor: default !important;
+}
+.lds-ring {
+	display: inline-block;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 200px;
+	left: 50%;
+	width: 80px;
+	height: 80px;
+	z-index: 10000;
+}
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border: 8px solid yellow;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: yellow transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+/*Hover Boxes*/
+.tooltipicon {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	display: inline-block;
+	font-weight: 500;
+	font-size: 16px;
+	color: white;
+	background-color: grey;
+	text-align: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	vertical-align: +10%;
+}
+.tooltip {
+	position: relative;
+}
+.tooltip:not(.controls)::before {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: 500;
+	content: "i";
+	font-size: 16px;
+	color: white;
+	background-color: grey;
+	text-align: center;
+	width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	margin-right: 5px;
+	vertical-align: +10%;
+}
+@media (hover: hover) {
+	.tooltip:hover {
+		outline: 1px dotted black;
+	}
+	.tooltip:hover::after {
+		content: "";
+		position: absolute;
+		bottom: -15px;
+		left: 50%;
+		margin-left: -8px;
+		border-width: 8px;
+		border-style: solid;
+		border-color: transparent transparent lightblue transparent;
+		z-index: 10;
+		visibility: inherit;
+	}
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+	}
+}
+.tooltip.hover {
+	outline: 1px dotted black;
+}
+.tooltip.hover::after {
+	content: "";
+	position: absolute;
+	bottom: -15px;
+	left: 50%;
+	margin-left: -8px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent transparent lightblue transparent;
+	z-index: 10;
+	visibility: inherit;
+}
+.tooltip.hover .tooltiptext {
+	visibility: visible;
+}
+.tooltiptext {
+	visibility: hidden;
+	width: 100%;
+	min-width: 100px;
+	max-width: 80vw;
+	background-color: lightblue;
+	color: black;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 6px;
+	padding: 5px;
+	position: absolute;
+	z-index: 10;
+	bottom: -13px;
+	left: 50%;
+	transform: translate(-50%, 100%);
+}
+.installprompt {
+	text-align: center;
+	font-size: min(20px, 4vw);
+	background-color: white;
+	width: min(400px, 90vw);
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	border-radius: 10px;
+	padding: 10px 10px 2px 10px;
+	z-index: 10;
+}
+.installprompt span {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+.installprompt .close {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+.blink {
+	animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}

@@ -1,0 +1,11 @@
+[
+	{
+	  "relation": ["delegate_permission/common.handle_all_urls"],
+	  "target": {
+		"namespace": "android_app",
+		"package_name": "app.midikaraoke.twa",
+		"sha256_cert_fingerprints":
+		  ["D2:CE:1A:78:3B:77:CA:4A:54:52:8D:7D:96:9D:17:73:78:A6:BC:09:10:DE:CA:12:6C:33:F5:45:FF:18:3A:D6"]
+	  }
+	}
+  ]
