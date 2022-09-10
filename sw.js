@@ -32,6 +32,7 @@ define(["./workbox-00b52446"], function (e) {
 		e.registerRoute(/soundfonts/, new e.CacheFirst({ cacheName: "soundfonts", plugins: [] }), "GET"),
 		e.registerRoute(/libs/, new e.CacheFirst({ cacheName: "libs", plugins: [] }), "GET"),
 		e.registerRoute(/songs/, new e.StaleWhileRevalidate({ cacheName: "songs", plugins: [] }), "GET"),
-		e.registerRoute(/\.(?:html|css|js|json|png|wasm)$/, new e.StaleWhileRevalidate({ cacheName: "assets", plugins: [] }), "GET");
+		e.registerRoute(/\.(?:html|css|js|json|png|wasm)$/, new e.StaleWhileRevalidate({ cacheName: "assets", plugins: [] }), "GET"),
+		e.registerRoute(/\/$/, new e.StaleWhileRevalidate({ cacheName: "home", plugins: [] }), "GET");
 });
 //# sourceMappingURL=sw.js.map
