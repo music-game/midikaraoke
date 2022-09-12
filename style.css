@@ -650,7 +650,7 @@ a.disabled {
 .tooltip {
 	position: relative;
 }
-.tooltip:not(.controls)::before {
+.tooltip:not(.controls):not(.nohelpicon)::before {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-weight: 500;
 	content: "i";
@@ -687,6 +687,7 @@ a.disabled {
 .tooltip.hover {
 	outline: 1px dotted black;
 }
+.tooltip.toolon::after,
 .tooltip.hover::after {
 	content: "";
 	position: absolute;
@@ -699,6 +700,7 @@ a.disabled {
 	z-index: 10;
 	visibility: inherit;
 }
+.tooltip.toolon .tooltiptext,
 .tooltip.hover .tooltiptext {
 	visibility: visible;
 }
