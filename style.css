@@ -733,7 +733,7 @@ a.disabled {
 	left: 50%;
 	transform: translate(-50%, 0);
 	border-radius: 10px;
-	padding: 10px 10px 2px 10px;
+	padding: 10px 10px 5px 10px;
 	z-index: 10;
 }
 .installprompt span {
@@ -746,6 +746,12 @@ a.disabled {
 	position: absolute;
 	right: 5px;
 	top: 5px;
+}
+img.playstore {
+	width: 100%;
+}
+span.playbadge {
+	width: 50%;
 }
 .blink {
 	animation: blinker 1.5s linear infinite;

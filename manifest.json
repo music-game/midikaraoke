@@ -28,5 +28,14 @@
       "sizes": "512x512",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "related_applications": [
+	{
+	  "platform": "play",
+	  "url": "https://play.google.com/store/apps/details?id=app.midikaraoke.twa",
+	  "id": "app.midikaraoke.twa"
+	}
+  ],
+  "prefer_related_applications": true,
+  "iarc_rating_id": "4ed53d95-1d0e-4c78-ac8b-4eb8b244d8c2"
 }
