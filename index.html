@@ -10,7 +10,7 @@
 		<script async src="libs/Filesaver.js"></script>
 		<script async src="libs/EBML.js"></script>
 		<script async src="libs/RecordRTC.js"></script>
-		<script async data-domain="midikaraoke.app" src="libs/plausible.js"></script>
+		<script async data-api="https://plausible.io/api/event" data-domain="midikaraoke.app" src="libs/plausible.js"></script>
 		<script>navigator.serviceWorker.register("sw.js")</script> 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -93,8 +93,8 @@
 				</button>
 			</div>
 			<div class="container">
-				<canvas id="game" width="800" height="500"></canvas>
-				<canvas id="scope" width="800" height="200"></canvas>
+				<canvas id="game" width="400" height="500"></canvas>
+				<canvas id="scope" width="400" height="200"></canvas>
 				<div class="pausetext">Game Paused</div>
 				<div class="lds-ring">
 					<div></div>

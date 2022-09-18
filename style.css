@@ -103,9 +103,7 @@ svg {
 	vertical-align: middle;
 }
 .board {
-	width: 800px;
-	/* height: 665px; */
-	/* border: 1px solid #000; */
+	width: 95%;
 	border-radius: 10px;
 	margin-left: auto;
 	margin-right: auto;
