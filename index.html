@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<script defer data-domain="midikaraoke.app" src="https://plausible.io/js/plausible.js"></script>
+		<title>MIDI Karaoke</title>
+		<link rel="manifest" href="manifest.json">
+		<link rel="stylesheet" href="style.css" />
+		<script src="libs/jquery.min.js"></script>
+		<script src="private.min.js"></script>
+		<link rel="prefetch" href="PitchWorker.js" />
+		<script async src="libs/Filesaver.js"></script>
+		<script async src="libs/EBML.js"></script>
+		<script async src="libs/RecordRTC.js"></script>
+		<script async data-domain="midikaraoke.app" src="libs/plausible.js"></script>
+		<script>navigator.serviceWorker.register("sw.js")</script> 
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
 		<link rel="shortcut icon" href="icons/16x16-icon.png" />
 		<link rel="apple-touch-icon" href="icons/192x192-icon.png">
 		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -10,19 +23,6 @@
 		<meta name="apple-mobile-web-app-title" content="MIDI Karaoke" />
 		<meta name="theme-color" content="#f5f7fa" />
 		<meta name="description" content="Turn any MIDI file song into a karaoke game. Your singing pitch is measured and scored by its accuracy. Save a video recording of your performance.">
-		<title>MIDI Karaoke</title>
-		<link rel="manifest" href="manifest.json">
-		<link rel="stylesheet" href="style.css" />
-		<script src="libs/jquery.min.js"></script>
-		<script src="libs/Filesaver.js"></script>
-		<script src="libs/EBML.js"></script>
-		<script src="libs/RecordRTC.js"></script>
-		<script src="private.min.js"></script>
-		<link rel="prefetch" href="PitchWorker.js" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-		<script>navigator.serviceWorker.register("sw.js")</script> 
 	</head>
 	<body>
 		<div class="board">
