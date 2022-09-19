@@ -34,6 +34,10 @@
 	  "platform": "play",
 	  "url": "https://play.google.com/store/apps/details?id=app.midikaraoke.twa",
 	  "id": "app.midikaraoke.twa"
+	},
+	{
+	  "platform": "itunes",
+	  "url": "https://apps.apple.com/us/app/midi-karaoke/id1645562614"
 	}
   ],
   "prefer_related_applications": true,
